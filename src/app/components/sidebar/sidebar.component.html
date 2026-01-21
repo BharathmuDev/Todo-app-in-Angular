@@ -1,0 +1,51 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Categories</h2>
+  </div>
+
+  <nav class="category-list">
+    <button 
+      [class.active]="(todoService.selectedCategory$ | async) === 'All'"
+      (click)="todoService.setSelectedCategory('All')"
+    >
+      <span class="icon">{{todoService.categoryIcons['All']}}</span>
+      All
+    </button>
+
+    <div class="category-item" *ngFor="let cat of todoService.categories$ | async">
+      <button 
+        [class.active]="(todoService.selectedCategory$ | async) === cat"
+        (click)="todoService.setSelectedCategory(cat)"
+      >
+        <span class="icon">{{todoService.categoryIcons[cat] || todoService.categoryIcons['Other']}}</span>
+        {{cat}}
+      </button>
+
+      <button 
+        class="delete-cat" 
+        (click)="todoService.deleteCategory(cat)"
+        *ngIf="!isDefault(cat)"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="add-category">
+    <input 
+      type="text" 
+      [(ngModel)]="newCategoryName" 
+      (keyup.enter)="addCategory()"
+      placeholder="New category..."
+    />
+    <button (click)="addCategory()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </button>
+  </div>
+</aside>
