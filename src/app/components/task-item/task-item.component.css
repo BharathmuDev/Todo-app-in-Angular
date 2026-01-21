@@ -1,0 +1,91 @@
+.task-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item:hover {
+    background: var(--hover-bg);
+    border-color: var(--text-secondary);
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.task-item.completed .checkbox {
+    border-color: var(--accent-green);
+    background: var(--accent-green);
+}
+
+.check-inner svg {
+    width: 14px;
+    height: 14px;
+    color: #000;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.task-item.completed .task-text {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.category-badge {
+    font-size: 10px;
+    background: var(--hover-bg);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    border: 1px solid var(--card-border);
+    text-decoration: none !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.delete-btn {
+    opacity: 0;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.task-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+}
+
+.delete-btn svg {
+    width: 18px;
+    height: 18px;
+}

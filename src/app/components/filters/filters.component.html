@@ -1,0 +1,25 @@
+<div class="filters-container" *ngIf="todoService.stats$ | async as stats">
+  <div class="filter-buttons">
+    <button 
+      [class.active]="(todoService.filter$ | async) === 'all'"
+      (click)="todoService.setFilter('all')"
+    >
+      All <span class="badge">{{stats.total}}</span>
+    </button>
+    <button 
+      [class.active]="(todoService.filter$ | async) === 'active'"
+      (click)="todoService.setFilter('active')"
+    >
+      Active <span class="badge success">{{stats.active}}</span>
+    </button>
+    <button 
+      [class.active]="(todoService.filter$ | async) === 'completed'"
+      (click)="todoService.setFilter('completed')"
+    >
+      Completed <span class="badge">{{stats.done}}</span>
+    </button>
+  </div>
+  <button class="clear-btn" (click)="todoService.clearCompleted()" *ngIf="stats.done > 0">
+    Clear completed
+  </button>
+</div>

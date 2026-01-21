@@ -1,0 +1,47 @@
+<div class="stats-grid" *ngIf="todoService.stats$ | async as stats">
+  <div class="stat-card">
+    <div class="stat-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="6" x2="21" y2="6"></line>
+        <line x1="8" y1="12" x2="21" y2="12"></line>
+        <line x1="8" y1="18" x2="21" y2="18"></line>
+        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+      </svg>
+      <span class="label">TOTAL</span>
+    </div>
+    <div class="value">{{stats.total}}</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+      <span class="label">ACTIVE</span>
+    </div>
+    <div class="value">{{stats.active}}</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <span class="label">DONE</span>
+    </div>
+    <div class="value success">{{stats.done}}</div>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-info">
+      <span>Progress</span>
+      <span>{{stats.progress}}%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" [style.width.%]="stats.progress"></div>
+    </div>
+  </div>
+</div>

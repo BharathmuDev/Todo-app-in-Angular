@@ -1,0 +1,11 @@
+<app-filters></app-filters>
+<div class="list-container">
+  <app-task-item 
+    *ngFor="let todo of todoService.filteredTodos$ | async" 
+    [task]="todo"
+  ></app-task-item>
+  
+  <div class="empty-state" *ngIf="(todoService.filteredTodos$ | async)?.length === 0">
+    <p>No tasks found</p>
+  </div>
+</div>

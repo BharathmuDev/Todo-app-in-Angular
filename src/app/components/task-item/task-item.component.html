@@ -1,0 +1,24 @@
+<div class="task-item" [class.completed]="task.completed" (click)="todoService.toggleTodo(task.id)">
+  <div class="checkbox">
+    <div class="check-inner" *ngIf="task.completed">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+  </div>
+  <span class="task-text">
+    {{task.text}}
+    <span class="category-badge">
+      {{todoService.categoryIcons[task.category] || todoService.categoryIcons['Other']}}
+      {{task.category}}
+    </span>
+  </span>
+
+
+  <button class="delete-btn" (click)="$event.stopPropagation(); todoService.deleteTodo(task.id)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="3 6 5 6 21 6"></polyline>
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+    </svg>
+  </button>
+</div>
